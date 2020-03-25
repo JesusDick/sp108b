@@ -68,3 +68,85 @@ i = t5
 goto L0
 (L1)
 ``` 
+
+``` 
+PS C:\ccc\sp108b\HomeWork\03-compiler> ./compiler test/IF.c
+a = 3;
+b = 5;
+t = 0;
+if (a > b)
+    t = a;
+else
+   t = b;
+========== lex ==============
+token=a
+token==
+token=3
+token=;
+token=b
+token==
+token=5
+token=;
+token=t
+token==
+token=0
+token=;
+token=if
+token=(
+token=a
+token=>
+token=b
+token=)
+token=t
+token==
+token=a
+token=;
+token=else
+token=t
+token==
+token=b
+token=;
+========== dump ==============
+0:a
+1:=
+2:3
+3:;
+4:b
+5:=
+6:5
+7:;
+8:t
+9:=
+10:0
+11:;
+12:if
+13:(
+14:a
+15:>
+16:b
+17:)
+18:t
+19:=
+20:a
+21:;
+22:else
+23:t
+24:=
+25:b
+26:;
+============ parse =============
+t0 = 3
+b = t1
+t2 = 0
+t3 = a
+t4 = b
+t5 = t3 > t4
+if not T5 goto L0
+t6 = a
+t = t6
+goto L1
+(L0)
+t7 = b
+t = t7
+
+``` 
