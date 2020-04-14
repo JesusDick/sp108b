@@ -152,8 +152,8 @@ void IF() {
 void STMT() {
   if (isNext("while"))
     WHILE();
-  // else if (isNext("if"))
-  //   IF();
+  else if (isNext("if"))
+    IF();
   else if (isNext("{"))
     BLOCK();
   else {
