@@ -158,3 +158,16 @@ PS D:\ccc\course\sp\code\c\02-compiler\05-compiler-run> ./compiler test/sum.c -r
 08: ifnot t4 (0) goto L2 (18)
 18: (L2) (18)
 ```
+```
+PS C:\ccc\sp108b\HomeWork\05-compiler-run> ./compiler test/if.c -run
+===================irRun()=======================
+00: t1 = 3 (3)
+01: a = t1 (3)
+04: t2 = a (3)
+05: t3 = b (5)
+07: ifnot t4 (0) goto L1 (11)
+11: (L1) (11)
+12: t1 = b (5)
+13: t = t1 (5)
+14: (L2) (14)
+```
