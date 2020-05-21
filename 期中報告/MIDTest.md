@@ -106,27 +106,3 @@
      「最佳編譯器」的話，那就必須在優化這步驟花費想當多時間才行。
   6. 程式碼生成：
   程式碼生成是以原始碼中間表述作為輸入，並對映到目的語言，而程式碼生成除了中間表述到機器指令的基本轉換之外，還有一些任務在此階段完成，包括指令的選擇、指令的調度、暫存器配置、資料除錯(debug data)。
-
-[1.參考資料](https://wiki.mbalib.com/zh-tw/%E7%BC%96%E8%AF%91%E5%99%A8)
-/
-[2.參考資料](https://zh.wikipedia.org/wiki/%E7%B7%A8%E8%AD%AF%E5%99%A8)
-/
-[3.參考資料](http://inspiregate.com/programming/other/471-compiler-1.html)
-/
-[4.參考資料](http://epaper.gotop.com.tw/pdf/ael010100.pdf)
-/
-[5.參考資料](https://kknews.cc/zh-tw/tech/reajkn4.html)
-
-[6.參考資料](http://epaper.gotop.com.tw/pdf/ael005600.pdf)
-/
-[7.參考資料](http://hackga.com/article/5991758c0d415c3ec4fd117c)
-/
-[8.參考資料](https://www.itread01.com/content/1545466206.html)
-/
-[9.參考資料](https://zh.wikipedia.org/wiki/%E6%BA%90%E4%BB%A3%E7%A0%81)
-/
-[10.參考資料](https://zh.wikipedia.org/wiki/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8)
-
-[11.參考資料](https://en.wikipedia.org/wiki/Loop_inversion)
-/
-[12.參考資料](https://en.wikipedia.org/wiki/Code_generation_(compiler))
