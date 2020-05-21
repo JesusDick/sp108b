@@ -9,7 +9,7 @@
 ---
 原始碼→ 預處理器→ 編譯器→ 組譯程式→ 目的碼→ 連結器→ 執行檔，最後打包好的檔案就可以給電腦去判讀執行了。
 ---
-然而編譯器內部又可拆分前端與後端，前端主要用於解析原始碼，透過詞法分析器和語法分析器協同工作，把原始碼中的單詞也就是Token找出，然後再把分散的單詞組裝成有意義的表達式、語句、函數等語言，後端則主要負責分析、優化中間代碼以及生成目的碼，
+然而編譯器內部又可拆分前端與後端，前端主要用於解析原始碼，透過詞法分析器和語法分析器協同工作，把原始碼中的單字元也就是Token找出，然後再把分散的單字元組裝成有意義的表達式、語句、函數等語言，後端則主要負責分析、優化中間代碼以及生成目的碼，
 如果更加仔細的去觀察的話，它是一個有順序的步驟，多個步驟可能組合在一起，有些編譯器前段與後端都有優化，雖然要不要優化是可以依程序元去做選擇，但沒有做優化的編譯器可能，在處理程式碼的過程中所吃的資源可能會對你的電腦造成較大的負擔。
 ---
 ### 到編譯器的流程解析 :
@@ -24,30 +24,64 @@
   主要處理#符號開頭的程式碼，如#include、#define、#undefine等，而這些程式碼一般放在main()主函式之前，其有效範圍一直到程式結束，除非使用#undefine。
   * 編譯器 : 
   編譯器又可分為六個組成分別為，詞法分析、語法分析、語意分析、中間碼、優化器、程式碼生成，詞法分析器和語法分器前面說明過了這裡不再贅述；
-  1. 語意分析 :
+  1. 詞法分析：
+  詞法分析又稱詞彙分析或掃描，詞法分析器讀入原始碼的字串流，並將它們組成有意義的詞素(lexme)順序，分析器分析完後以單字元(Token)作為輸出，詞法單位會傳給下個步驟及語法分析器，而單字元分成兩大部分，第一部份token-name是由語法分析步驟中使用的抽象語法，第二部份是attribute-value，指向符號表中單字元的條目(entry) ;
+     * 例如:
+
+           position = initial + rate*60
+        以上的例句中可以對映成如下的但單字元，而這些詞法單位將傳給語法分析器階段；
+        
+     1.
+        position是單字元，對映成詞法單位<id 1>，其中id是識別字的縮寫而1則指向position對映的條目，識別字對應的符號表條目存放該識別字有關的 資訊，例如它的名稱和類型。
+     2.
+        指定符號=對映詞法單位的<=>單字元   
+     3.
+        Initial是對映成詞法單位的<id 2>的單字元，其中2指向Initial對映的條目
+     4.
+        +則是詞法單位中的<+>
+     5.
+        rate是對映成詞法單位的<id 3>的單字元，其3指向rate對映的條目
+     6.
+        *則是詞法單位中的< * >   
+     7.
+        60則是對映成詞法單位中<60>的單字元 
+     8.
+        空格的部份則會被詞法分析器自動忽略掉。 
+  2. 語法分析器 :
+  語法分析器又稱解析，此階段就是把單字元組合成語法結構，便是我們常聽到的語法樹，語法分析器建立出來的語法樹，便是從詞法分析器中分析出來的單字元，而語法樹是要給下個步驟語意分析器去做分析的。
+     * 語法分析器主要有兩種方是完成：
+
+     1.
+        自頂向下分析：
+        根據形式語法規則，在語法分析樹的自頂向下展開中搜尋輸入符號串可能的最左推導。單詞按從左到右的順序依次使用。
+     2.
+        由下而上分析：
+        語法剖析器從現有的輸入符號串開始，嘗試將其根據給定的形式語法規則進行覆寫，最終覆寫為語法的起始符號。
+  3. 語意分析 :
   主要來檢查原始碼和語言定義的語意是否一致，並把這些資訊存放在語法樹和符號表中，以便之後的中間產生碼的使用，而程式語言中有些陣列要求必須是整數，如果用浮點數(如10.00)當作陣列索引，編譯器就必須回報錯誤，就好比我們把while或if的compiler編寫完時，我們必須判斷它是否為Bloon或Int，
      * 如下 : 
 
-        Analyser.prototype.evaluateBoolNode = function (node){
-        node.valueType = Analyser.TYPE_BOOL;
-        }
-        Analyser.prototype.evaluateIntNode = function (node){
-        node.valueType = Analyser.TYPE_INT;
-        }
-    若不是或是用錯方式宣告就必須報錯
-     * 如下 :
+           Analyser.prototype.evaluateBoolNode = function (node){
+           node.valueType = Analyser.TYPE_BOOL;
+           }
+           Analyser.prototype.evaluateIntNode = function (node){
+           node.valueType = Analyser.TYPE_INT;
+           }
+      若不是或是用錯方式宣告就必須報錯
+      
+        * 如下 :
 
-        Analyser.prototype.evaluateVariableNode = function (node){
-        if (this.vars[node.varName]){
-        //this variable has been declared before
-        //since we can find it in our variable table
-        Errors.push({
-        type: Errors.SEMANTIC_ERROR,
-        msg: "The variable \"" + node.varName + "\" has been declared already",line: node.line
-        });
-  2. 中間碼：
+              Analyser.prototype.evaluateVariableNode = function (node){
+              if (this.vars[node.varName]){
+              //this variable has been declared before
+              //since we can find it in our variable table
+              Errors.push({
+              type: Errors.SEMANTIC_ERROR,
+              msg: "The variable \"" + node.varName + "\" has been declared already",line: node.line
+              });
+  4. 中間碼：
   把原始碼翻譯成目的碼的中，編譯器可能建構出一個或多中間表述，這些中間表述可能有多種形式表示，而語法樹則是一種中間表述形式，在原始碼經過詞法分析、語法分析、語意分析後，便會產生出類機器語言的中間表述，但並不等於機器語言，機器語言式全都以二進制所組成的指令代碼，這些中間表述應該具備兩個要素，一是易於產生、二是輕易翻譯成目的機器的語言。 
-  3. 優化器 :
+  5. 優化器 :
   優化器的最根本目的是把程式碼做一個減少的動作，每一行程式即便跟最終的執行結果並不會帶來太大的影響，但是電腦還是會需要吃一些電腦的資源去讀取這一段毫無相關的程式碼，而要達到優化的最簡單的方式是，刪掉上面所述的沒有用過的變數，而比較複雜的是，以替換成簡短或耗用的資源較少的程式碼，
 
      * 簡單的比方：
@@ -70,8 +104,29 @@
             }
      上面兩個程式執行結果是一樣的，但左邊的程式比起右邊的程式不但簡短很多，所耗用的資源也比右邊的少，若要讓編譯器達到
      「最佳編譯器」的話，那就必須在優化這步驟花費想當多時間才行。
-  4. 程式碼生成：
+  6. 程式碼生成：
   程式碼生成是以原始碼中間表述作為輸入，並對映到目的語言，而程式碼生成除了中間表述到機器指令的基本轉換之外，還有一些任務在此階段完成，包括指令的選擇、指令的調度、暫存器配置、資料除錯(debug data)。
 
+[1.參考資料](https://wiki.mbalib.com/zh-tw/%E7%BC%96%E8%AF%91%E5%99%A8)
+/
+[2.參考資料](https://zh.wikipedia.org/wiki/%E7%B7%A8%E8%AD%AF%E5%99%A8)
+/
+[3.參考資料](http://inspiregate.com/programming/other/471-compiler-1.html)
+/
+[4.參考資料](http://epaper.gotop.com.tw/pdf/ael010100.pdf)
+/
+[5.參考資料](https://kknews.cc/zh-tw/tech/reajkn4.html)
 
- 
+[6.參考資料](http://epaper.gotop.com.tw/pdf/ael005600.pdf)
+/
+[7.參考資料](http://hackga.com/article/5991758c0d415c3ec4fd117c)
+/
+[8.參考資料](https://www.itread01.com/content/1545466206.html)
+/
+[9.參考資料](https://zh.wikipedia.org/wiki/%E6%BA%90%E4%BB%A3%E7%A0%81)
+/
+[10.參考資料](https://zh.wikipedia.org/wiki/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8)
+
+[11.參考資料](https://en.wikipedia.org/wiki/Loop_inversion)
+/
+[12.參考資料](https://en.wikipedia.org/wiki/Code_generation_(compiler))
