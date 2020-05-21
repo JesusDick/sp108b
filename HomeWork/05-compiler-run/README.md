@@ -158,6 +158,7 @@ PS D:\ccc\course\sp\code\c\02-compiler\05-compiler-run> ./compiler test/sum.c -r
 08: ifnot t4 (0) goto L2 (18)
 18: (L2) (18)
 ```
+
 ```
 PS C:\ccc\sp108b\HomeWork\05-compiler-run> ./compiler test/if.c -run
 ===================irRun()=======================

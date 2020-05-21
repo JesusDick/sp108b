@@ -89,6 +89,20 @@ void WHILE() {
   emit("(L%d)\n", whileEnd);
 }
 
+void FOR() {
+  int forBegin = nextLabel();
+  int forEnd = nextLabel();
+  emit("(L%d)\n", whileBegin);
+  skip("for");
+  skip("(");
+  int e = E();
+  emit("if not T%d goto L%d\n", e, forEnd);
+  skip(")");
+  STMT();
+  emit("goto L%d\n", forBegin);
+  emit("(L%d)\n", forEnd);
+}
+
 
 //IF = if (E) STMT (else STMT)?
 void IF() {
