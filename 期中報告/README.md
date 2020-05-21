@@ -1,0 +1,13 @@
+## 以下為期中報告的參考資料
+1. [MBA智庫-編譯器](https://wiki.mbalib.com/zh-tw/%E7%BC%96%E8%AF%91%E5%99%A8)
+2. [維基百科-編譯器](https://wiki.mbalib.com/zh-tw/%E7%BC%96%E8%AF%91%E5%99%A8)
+3. [深入淺出教你寫編譯器（Compiler）](http://inspiregate.com/programming/other/471-compiler-1.html)
+4. [編譯系統設計](http://epaper.gotop.com.tw/pdf/ael010100.pdf)
+5. [程式設計師的自我修養之：編譯器做了什麼](https://kknews.cc/zh-tw/tech/reajkn4.html)
+6. [C的前置處理器](http://epaper.gotop.com.tw/pdf/ael005600.pdf)
+7. [深入淺出教你寫編譯器（Compiler）- 優化器](http://hackga.com/article/5991758c0d415c3ec4fd117c)
+8. [機器語言與組合語言](https://www.itread01.com/content/1545466206.html)
+9. [維基百科-原始碼](https://zh.wikipedia.org/wiki/%E6%BA%90%E4%BB%A3%E7%A0%81)
+10. [維基百科-預處理器](https://zh.wikipedia.org/wiki/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8)
+11. [維基百科-Loop inversion](https://en.wikipedia.org/wiki/Loop_inversion)
+12. [維基百科-Code generation](https://en.wikipedia.org/wiki/Code_generation_(compiler))
