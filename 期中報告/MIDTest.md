@@ -26,7 +26,7 @@
   編譯器又可分為六個組成分別為，詞法分析、語法分析、語意分析、中間碼、優化器、程式碼生成。
   1. 詞法分析：
   詞法分析又稱詞彙分析或掃描，詞法分析器讀入原始碼的字串流，並將它們組成有意義的詞素(lexme)順序，分析器分析完後以單字元(Token)作為輸出，詞法單位會傳給下個步驟及語法分析器，而單字元分成兩大部分，第一部份token-name是由語法分析步驟中使用的抽象語法，第二部份是attribute-value，指向符號表中單字元的條目(entry) ;
-     * 例如:
+     * 例如: 以下段落節錄自:編譯系統設計一文(網址為: http://epaper.gotop.com.tw/pdf/ael010100.pdf)
 
            position = initial + rate*60
         以上的例句中可以對映成如下的但單字元，而這些詞法單位將傳給語法分析器階段；
@@ -59,7 +59,7 @@
         語法剖析器從現有的輸入符號串開始，嘗試將其根據給定的形式語法規則進行覆寫，最終覆寫為語法的起始符號。
   3. 語意分析 :
   主要來檢查原始碼和語言定義的語意是否一致，並把這些資訊存放在語法樹和符號表中，以便之後的中間產生碼的使用，而程式語言中有些陣列要求必須是整數，如果用浮點數(如10.00)當作陣列索引，編譯器就必須回報錯誤，就好比我們把while或if的compiler編寫完時，我們必須判斷它是否為Bloon或Int，
-     * 如下 : 
+     * 以下段落節錄自:深入淺出教你寫編譯器（Compiler）一文(網址為: http://inspiregate.com/programming/other/471-compiler-1.html)
 
            Analyser.prototype.evaluateBoolNode = function (node){
            node.valueType = Analyser.TYPE_BOOL;
@@ -69,7 +69,7 @@
            }
       若不是或是用錯方式宣告就必須報錯
       
-        * 如下 :
+        * 以下段落節錄自:深入淺出教你寫編譯器（Compiler）一文(網址為: http://inspiregate.com/programming/other/471-compiler-1.html)
 
               Analyser.prototype.evaluateVariableNode = function (node){
               if (this.vars[node.varName]){
