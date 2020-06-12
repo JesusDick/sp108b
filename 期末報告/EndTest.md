@@ -36,35 +36,35 @@ Enter就咯。
 再移除編譯過的.exe檔;
 
 在創建Cargo.toml檔中輸入的name一定要和專案的根目錄名稱相同，大小寫也要一樣，否則會出現以下這種情況
-![likethis](likethis.png "likethis")
+![likethis](likethis.PNG "likethis")
 
 ---
 Cargo有一個我個人覺得算方便的地方，當你程式碼打完後要建置執行專案時，只要下一個指令Cargo就可以幫你處理到好，就不用在手動建置一個
 .toml檔了
 
 首先最起碼要有個專案目錄和程式碼像這樣。PS.project只是存放專案目錄的目錄而已。
-![建置專案](buildingproject.png "專案建置")
+![建置專案](buildingproject.PNG "專案建置")
 
 再來對圖片中的專案目錄開啟終端機，
-![開啟終端機](buildingproject1.png "開啟終端機")
+![開啟終端機](buildingproject1.PNG "開啟終端機")
 對著終端機輸入。
 
      cargo new 你的專案目錄名稱 --bin
 PS.要完全一樣的名稱，不能專案名稱是小寫，但輸入指令的專案名稱是大寫。
 
 像這樣
-![輸入](buildingproject2.png "輸入")
+![輸入](buildingproject2.PNG "輸入")
 輸入完以後終端機會顯示一個訊息，告訴你建置了一個執行檔。
-![訊息](buildingproject3.png "訊息")
+![訊息](buildingproject3.PNG "訊息")
 並且你的專案目錄會多一個跟你專案目錄同名的目錄
-![專案](dir.png "專案")
+![專案](dir.PNG "專案")
 接著你就可以去執行它，也是先對著建置好的目錄開啟終端機，接著輸入。
            
     cargo run1
 輸入完以後終端機會告訴你，編譯hello_world，編譯完成花了多少時間，和執行編譯好的.exe檔，之後就會印出來結果。
 
 如圖
-![編譯](dir2.png "編譯")
+![編譯](dir2.PNG "編譯")
 接著再去系統幫你建置好的目錄去找.toml檔，打開來看後原本以手動輸入的
 
     [package]
@@ -73,7 +73,7 @@ PS.要完全一樣的名稱，不能專案名稱是小寫，但輸入指令的�
     version = "0.0.1"
     authors = [ "Your name <you@example.com>"
 它都幫你建置好了。
-![完成](dir3.png "完成")
+![完成](dir3.PNG "完成")
 圖中name的地方指細看的話，它就是你的專案目錄的名稱，因為你是用指令去建置執行檔的，所以可以避免掉名稱輸入錯誤的問題。
 
 ---
