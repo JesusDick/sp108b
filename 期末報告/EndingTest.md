@@ -20,7 +20,7 @@
 如果之前就已經安裝過紫色的vs的話不需要再安裝一次，會直接跳以下畫面
 ![這個畫面](這張圖.PNG "這張圖")
 然後選第一個選項，直接打數字1然後
-Enter就咯。
+Enter就可以了。
 
 如果不行會出現這張圖
 ![那張圖](那張圖.PNG "就是那張圖")
@@ -92,3 +92,37 @@ PS.要完全一樣的名稱，不能專案名稱是小寫，但輸入指令的�
 圖中name的地方仔細看的話，它就是你的專案目錄的名稱，因為你是用指令去建置執行檔的，所以可以避免掉名稱輸入錯誤的問題。
 
 ---
+
+在學習猜數字中可以發現
+
+    1.use std::io;
+
+    2.fn main() {
+    3.println!("Guess the number!");
+
+    4.println!("Please input your guess.");
+
+    5.let mut guess = String::new();
+
+    6.io::stdin().read_line(&mut guess)
+        .expect("Failed to read line");
+
+    7.println!("You guessed: {}", guess);
+    }
+    
+    ps.以上加入行號是為了方便學習。
+在第5行程式碼中的let其實就是C++或java中我們在的做變數宣告，
+因前4行中的關係我們在hello_world中介紹過了。
+
+如:
+
+    int a = 3;  像這樣子的變數宣告。
+但是在Rust中有一個要注意的地方，在用let宣告時它是預設為綁定變數，也就是說我在宣告
+
+    let x=3;
+x就都會是5不會變，如果我在底下使用x =  20,那x還是會是5,如果要使它可以變成x = 20可以使用mut，像以下輸出
+
+    let mut x = 3;
+    x = 20;
+---
+再來看到
