@@ -266,6 +266,6 @@ x就都會是5不會變，如果我在底下使用x =  20,那x還是會是5,如�
 `Ordering::Equal   => {println!("You win!");    break; }}`
 這段程式碼的意思是跟前面相同，只是多了個`break`，還記得前面我們有加`loop`嗎?這裡的`break`就是為了猜對數字之後，要跳出`loop`的條件，若沒有這個`break`即便猜對數字了，也會一直重複。
 
-以下是猜數字的程式碼
-
+以下猜數字的程式碼 修改自[Rust程式語言](https://askeing.github.io/rust-book/guessing-game.html)
+範圍可到負數。
 ![最後](最後2.PNG "最後2")
