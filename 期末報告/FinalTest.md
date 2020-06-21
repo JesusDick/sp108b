@@ -1,5 +1,6 @@
 # 期末報告
-## [學習rust語言](https://askeing.github.io/rust-book/)
+說明: 本報告的節錄內容主要來源為 -- [Rust程式語言](https://askeing.github.io/rust-book/)
+## 學習rust語言
 在安裝Rust語言中我覺得它裡面有重要的資訊官網沒有說得很清楚。
 ---
 * 前置作業:
