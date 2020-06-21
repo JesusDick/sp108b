@@ -110,6 +110,11 @@ x就都會是5不會變，如果我在底下使用x =  20,那x還是會是5,如�
 
     let mut x = 3;
     x = 20;
+
+![let](let.PNG "let")
+
+雖然執行出來可能會有錯誤訊息，但`x`的確被改成`10`了。
+
 ---
 再來看到第8行程式碼的後段，
 
@@ -197,18 +202,70 @@ x就都會是5不會變，如果我在底下使用x =  20,那x還是會是5,如�
     ---
     use rand::Rng; //在有效範圍中使用rand套件:如1~100
 
-之後在第9行插入的程式碼可以解讀為
+![補貼](補貼.PNG "補貼")
 
-    let secret_number = rand::thread_rng().gen_range(1, 101);
+之後在第10行插入的程式碼可以解讀為
+
+    let secret_number = rand::thread_rng().gen_range(-30, 101);
     //宣告一個變數，變數的值等於用rand產生的亂數透過重1到101中挑選一個。
+
+![補貼1](補貼1.PNG "補貼1")
 
 ---
 
-之後在第20行到23行插入程式碼
+先將13到20行加入到loop迴圈中
+
+        loop {
+        println!("Please input your guess.");
+
+        let mut guess = String::new();
+
+        io::stdin().read_line(&mut guess)
+            .expect("failed to read line");
+
+        println!("You guessed: {}", guess);
+
+    }  //loop是一個無限迴圈，除非設定條件跳出，否則會一直重複。
+
+![補貼](補貼2.PNG "補貼")
+
+之後在第19行插入程式碼
 
     let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(_) => continue,
         };
-`let guess: u32`意思是讓guess的型別是無號數
-`match guess.trim().parse()`意思是匹配guess變數
+`let guess: u32`意思是讓guess的型別是無號數，若要讓範圍延伸到有負數的話只要，將`u32`改成`i32`就可以了。
+
+![補貼3](補貼3.PNG "補貼3")
+
+`match guess.trim().parse()`意思是匹配guess變數，並先修剪掉其他符號如:`/n`,`/d`等等，再做解析的動作。
+
+接下來是`{ Ok(num) => num, Err(_) => continue,};`
+這段程式碼是將解析出來的值去做判斷，是數字就去到下一步，不是則重頭開始(continue).
+
+最後在第26行插入程式碼
+
+    match guess.cmp(&secret_number) {
+    Ordering::Less    => println!("Too small!"),
+    Ordering::Greater => println!("Too big!"),
+    Ordering::Equal   => {
+        println!("You win!");
+        break;
+        }
+    }  //這段程式碼是讓產生出來的亂數，跟我們輸入的亂數去做比較
+
+![補貼4](補貼4.PNG "補貼4")
+
+以下說明
+
+`Ordering::Less    => println!("Too small!")`比較猜的數字，若小於亂數，就印出`"Too small!"`
+
+`Ordering::Greater => println!("Too big!")`比較猜的數字，若大於亂數，就印出`"Too big!"`
+
+`Ordering::Equal   => {println!("You win!");    break; }}`
+這段程式碼的意思是跟前面相同，只是多了個`break`，還記得前面我們有加`loop`嗎?這裡的`break`就是為了猜對數字之後，要跳出`loop`的條件，若沒有這個`break`即便猜對數字了，也會一直重複。
+
+以下是猜數字的程式碼
+
+![最後](最後2.PNG "最後2")
