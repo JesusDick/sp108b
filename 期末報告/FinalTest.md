@@ -1,5 +1,5 @@
 # 期末報告
-## 學習rust語言
+## [學習rust語言](https://askeing.github.io/rust-book/)
 在安裝Rust語言中我覺得它裡面有重要的資訊官網沒有說得很清楚。
 ---
 * 前置作業:
