@@ -268,4 +268,5 @@ x就都會是5不會變，如果我在底下使用x =  20,那x還是會是5,如�
 
 以下猜數字的程式碼 修改自[Rust程式語言](https://askeing.github.io/rust-book/guessing-game.html)
 範圍可到負數。
+
 ![最後](最後2.PNG "最後2")
