@@ -1,5 +1,5 @@
 [package]
-name = "LET"
+name = "notrelotto"
 version = "0.1.0"
 authors = ["JesusDick <bbcoco55321@gmail.com>"]
 edition = "2018"
@@ -8,3 +8,4 @@ edition = "2018"
 
 [dependencies]
 
+rand = "*"
